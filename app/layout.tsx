@@ -19,7 +19,7 @@ const poppins = Poppins({
 // Websit Config
 export const metadata: Metadata = {
   title: 'StorageSyncOrbit',
-  description: 'MultiCahin OnRamp',
+  description: 'Evokes celestial coordination and seamless synchronization of storage systems across multiple L1 and L2 chains.',
 };
 
 export default function RootLayout({
