@@ -5,7 +5,7 @@ import Header from '../components/header';
 
 export default function Home() {
   return (
-    <div className="w-full min-h-screen bg-black">
+    <div className="w-full min-h-screen bg-gradient-to-b from-purple-900 to-black">
       <Header />
       <div>
         <div
