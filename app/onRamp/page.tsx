@@ -4,17 +4,19 @@ import StatsSection from '@/components/onRamp/statsSection';
 import FileList from '@/components/onRamp/fileList';
 import Header from '@components/header';
 import { generateCID, generateCommp } from '@/utils/dataPrep';
-import { ONRAMP_CONTRACT_ABI, ONRAMP_CONTRACT_ADDRESS } from '@components/contracts/onrampContract';
+import { ONRAMP_CONTRACT_ABI } from '@components/contracts/onrampContract';
+import { useContractAddress } from './useContractAddress';
 
-import React, { useState, useRef, ChangeEvent, DragEvent } from 'react';
+import React, { useEffect, useState, useRef, ChangeEvent, DragEvent } from 'react';
 
 import { ethers } from 'ethers';
 import { Check, File, FileText, Image, Upload, UploadCloud, X } from 'lucide-react';
-import { useWaitForTransactionReceipt, useWriteContract } from 'wagmi';
+import { useSwitchChain, useAccount, useWaitForTransactionReceipt, useWriteContract } from 'wagmi';
 
 import { uploadToIPFS } from './pinata';
 
 const PAYMENT_TOKEN_ADDRESS = process.env.NEXT_PUBLIC_PAYMENT_TOKEN_ADDRESS;
+
 
 export default function OnRamp() {
   const [file, setFile] = useState<File | null>(null);
@@ -25,6 +27,8 @@ export default function OnRamp() {
   const [loading, setLoading] = useState<boolean>(false);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const onramp_Contract = useContractAddress();
 
   const PINATA_CONFIGS = JSON.stringify({
     cidVersion: 1,
@@ -151,7 +155,7 @@ export default function OnRamp() {
 
       try {
         writeContract({
-          address: ONRAMP_CONTRACT_ADDRESS,
+          address: onramp_Contract,
           abi: ONRAMP_CONTRACT_ABI,
           functionName: 'offerData',
           args: [offer],
@@ -198,7 +202,7 @@ export default function OnRamp() {
     <>
       <Header />
 
-      <div className="pt-16 bg-blue-600 h-screen">
+      <div className="pt-16 bg-gradient-to-b from-purple-900 to-black h-screen">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Stats Section */}
           <StatsSection />
