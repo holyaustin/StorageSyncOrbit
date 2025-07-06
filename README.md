@@ -259,7 +259,7 @@ Copy `.env.sample` to `.env`
 
 Set the JWT from your PINATA API INFO:
 ```bash
-NEXT_PUBLIC_PINATA_JWT=
+NEXT_PUBLIC_PINATA_JWT= swxxx
 ```
 
 Install all dependencies:
