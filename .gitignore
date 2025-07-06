@@ -35,3 +35,56 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Smart Contract
+
+# Compiler files
+onramp-contracts/cache/
+onramp-contracts/out/
+onramp-contracts/lib-temp/
+onramp-contracts/ignition/
+
+# Ignores development broadcast logs
+!/broadcast
+/broadcast/*/31337/
+/broadcast/**/dry-run/
+
+# Dotenv file
+onramp-contracts/.env
+
+onramp-contracts/node_modules
+onramp-contracts/.env
+
+# Hardhat files
+onramp-contracts//cache
+onramp-contracts//artifacts
+onramp-contracts//deployments
+
+# TypeChain files
+onramp-contracts//typechain
+onramp-contracts//typechain-types
+
+# solidity-coverage files
+onramp-contracts//coverage
+onramp-contracts//coverage.json
+
+# Hardhat Ignition default folder for deployments against a local node
+onramp-contracts/ignition/deployments/chain-31337
+
+onramp-contracts/node_modules
+onramp-contracts/.env
+
+# Hardhat files
+onramp-contracts//cache
+onramp-contracts//artifacts
+
+# TypeChain files
+onramp-contracts//typechain
+onramp-contracts//typechain-types
+
+# solidity-coverage files
+onramp-contracts//coverage
+onramp-contracts//coverage.json
+
+# Hardhat Ignition default folder for deployments against a local node
+onramp-contracts/ignition/deployments/chain-31337
