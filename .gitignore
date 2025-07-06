@@ -88,3 +88,35 @@ onramp-contracts/coverage.json
 
 # Hardhat Ignition default folder for deployments against a local node
 onramp-contracts/ignition/deployments/chain-31337
+
+# If you prefer the allow list template instead of the deny list, see community template:
+# https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
+#
+# Binaries for programs and plugins
+onramp-contracts/*.exe
+onramp-contracts/*.exe~
+onramp-contracts/*.dll
+onramp-contracts/*.so
+onramp-contracts/*.dylib
+onramp-contracts/xchainClient
+
+# Test binary, built with `go test -c`
+onramp-contracts/*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+onramp-contracts/*.out
+
+# Dependency directories (remove the comment below to include it)
+# vendor/
+
+# Go workspace file
+onramp-contracts/go.work
+onramp-contracts/go.work.sum
+
+# env file
+onramp-contracts/.env
+
+
+# config
+onramp-contracts/config/xchain_key.json
+onramp-contracts/data/

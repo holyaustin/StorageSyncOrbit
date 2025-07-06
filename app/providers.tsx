@@ -10,7 +10,7 @@ const queryClient = new QueryClient();
 
 const config = getDefaultConfig({
   appName: 'StorageSyncOrbit',
-  projectId: 'WALLETCONNECT_PROJECT_ID',
+  projectId: 'afc5e8cdfbef61243fefe9ca836bdf31',
   chains: [flowTestnet, avalancheFuji, filecoinCalibration, filecoin, flowMainnet],
   ssr: true, // If your dApp uses server side rendering (SSR)
 });
