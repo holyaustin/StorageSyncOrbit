@@ -19,7 +19,7 @@ const poppins = Poppins({
 // Websit Config
 export const metadata: Metadata = {
   title: 'StorageSyncOrbit',
-  description: 'Filecoin-powered multi-chain data bridge hub for decentralized storage automation, evokes celestial coordination and seamless synchronization of storage systems across multiple L1 and L2 chains.',
+  description: 'Filecoin-powered cross-chain data bridge hub for decentralized storage automation, evokes celestial coordination and seamless synchronization of storage systems across multiple L1 and L2 chains.',
 };
 
 export default function RootLayout({
