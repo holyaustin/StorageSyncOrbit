@@ -56,17 +56,17 @@ onramp-contracts/node_modules
 onramp-contracts/.env
 
 # Hardhat files
-onramp-contracts//cache
-onramp-contracts//artifacts
-onramp-contracts//deployments
+onramp-contracts/cache
+onramp-contracts/artifacts
+onramp-contracts/deployments
 
 # TypeChain files
-onramp-contracts//typechain
-onramp-contracts//typechain-types
+onramp-contracts/typechain
+onramp-contracts/typechain-types
 
 # solidity-coverage files
-onramp-contracts//coverage
-onramp-contracts//coverage.json
+onramp-contracts/coverage
+onramp-contracts/coverage.json
 
 # Hardhat Ignition default folder for deployments against a local node
 onramp-contracts/ignition/deployments/chain-31337
@@ -75,16 +75,16 @@ onramp-contracts/node_modules
 onramp-contracts/.env
 
 # Hardhat files
-onramp-contracts//cache
-onramp-contracts//artifacts
+onramp-contracts/cache
+onramp-contracts/artifacts
 
 # TypeChain files
-onramp-contracts//typechain
-onramp-contracts//typechain-types
+onramp-contracts/typechain
+onramp-contracts/typechain-types
 
 # solidity-coverage files
-onramp-contracts//coverage
-onramp-contracts//coverage.json
+onramp-contracts/coverage
+onramp-contracts/coverage.json
 
 # Hardhat Ignition default folder for deployments against a local node
 onramp-contracts/ignition/deployments/chain-31337

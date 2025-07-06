@@ -20,12 +20,12 @@ This project demonstrates a **cross-chain data bridge** enabling seamless data o
 | Layer | Technology | Purpose |  
 |-------|------------|---------|  
 | **Blockchain** | Avalanche Fuji, Flow Testnet, Filecoin Calibration | Cross-chain demo environment |  
-| **Smart Contracts** | Solidity, Cadence | Bridge logic, storage proposal validation |  
-| **Storage Layer** | Filecoin (Lotus, Powergate), IPFS | Decentralized storage orchestration |  
-| **Backend** | Node.js, Express | Data indexing, deal processing |  
-| **Frontend** | React (optional) | UI for interacting with bridges |  
-| **Dev Tools** | Hardhat, Foundry, Docker, MongoDB | Development, deployment, and data persistence |  
-| **Orchestration** | Chainlink CCIP (planned), IPFS Cluster | Cross-chain communication and data replication |  
+| **Smart Contracts** | Solidity | Bridge logic, storage proposal validation |  
+| **Storage Layer** | Filecoin, IPFS, Pinata | Decentralized storage orchestration |  
+| **Backend** | Node.js, Solidity| Data indexing, deal processing |  
+| **Frontend** | NextJs | RainbowKit UI for interacting with bridges |  
+| **Dev Tools** | Hardhat, Foundry,  | Development, deployment, and data persistence |  
+| **Orchestration** | Axelar brdge, IPFS Cluster | Cross-chain communication and data replication |  
 
 ---
 
@@ -36,7 +36,7 @@ graph TD
     B --> C[Off-Chain Relayer]
     C --> D[IPFS Gateway]
     D --> E[Filecoin Calibration]
-    E --> F[MongoDB Indexer]
+    E --> F[Axelar Indexer]
     F --> G[Frontend Dashboard]
 ```
 
@@ -53,7 +53,7 @@ graph TD
    - Avalanche Fuji Testnet wallet ([wallet link](https://wallet.avax.network/))  
    - Flow Testnet wallet ([Flow CLI setup](https://docs.onflow.org/flow-cli/))  
 2. **Tools**:  
-   - Node.js (v18+)  
+   - Node.js (v20+)  
    - Docker (for local Filecoin/IPFS nodes)  
    - Git  
    - Hardhat/Foundry (for contract deployment)  
@@ -70,7 +70,7 @@ graph TD
 
 ### 1. Clone the Repo  
 ```bash
-git clone git@github.com:your-username/StorageSyncOrbit.git
+git clone git@github.com:holyaustin/StorageSyncOrbit.git
 cd StorageSyncOrbit
 ```
 
@@ -89,7 +89,7 @@ AVAX_RPC_URL=https://api.avax-test.network/ext/bc/C/rpc
 AVAX_PRIVATE_KEY=your_private_key_here
 
 # Flow Testnet
-FLOW_ACCESS_NODE=https://access.devnet.nodes.onflow.org:9000
+FLOW_ACCESS_NODE=https://testnet.evm.nodes.onflow.org
 FLOW_PRIVATE_KEY=your_flow_private_key
 
 # Filecoin Calibration
@@ -102,10 +102,8 @@ IPFS_API_URL=http://localhost:5001
 ```
 
 ### 4. Deploy Bridge Contracts  
-```bash
-npx hardhat run scripts/deployAvalancheBridge.js --network fuji
-npx flow-cli deploy --network testnet
-```
+
+- see on-ramp contract readme file
 
 ### 5. Start Local IPFS Node  
 ```bash
@@ -113,11 +111,24 @@ docker run -d -p 5001:5001 -p 4001:4001 ipfs/kubo
 ```
 
 ### 6. Run Relayer Service  
+
+Usage
+1️⃣ Start the xChain server:
+```bash
+./xchainClient daemon --config ./config/config.json --chain avalanche --buffer-service 
+```
+--aggregation-service
+2️⃣ Upload data using the client tool:
+```bash
+./xchainclient client offer-file --chain avalanche --config ./config/config.json <file_path> <payment-addr> <payment-amount>
+```
+3️⃣ Check deal status:
+```bash
+./xchainClient client dealStatus <cid> <offerId>
+```
 ```bash
 node relayer.js
 # Listens for events on Avalanche/Flow, processes data into Filecoin deals
-```
-
 ---
 
 ## 🧩 Usage  
@@ -229,50 +240,44 @@ This README includes:
 - Contribution workflows  
 - Licensing and contact info  
 
-Let me know if you need adjustments to the architecture, contract logic, or relayer code!
-
-This repo demonstrates how to onboard data from Avalanche to Filecoin via a cross-chain data bridge protocol, which processes storage proposals on Filecoin. It could potentially process the data storage coming from multichain, such as Linea, Base, Arbitrum, etc.
-
-The demo consists of the following components:
-- **[Demo UI](https://github.com/FIL-Builders/dataBridgeDemo)**: upload file via onramp contract
-- **[Onramp Contracts](https://github.com/FIL-Builders/onramp-contracts/)**: accepting storage requests & posdi proof verification.
-  -  The onramp contracts were deployed on Filecoin Calibration & Avalanche Fuji testnet. You can find the contract info in [contractDetails.tsx](https://github.com/FIL-Builders/dataBridgeDamo/blob/main/components/contractDetails.tsx).
-  - You can also deploy your version of onramp contracts.
-- **[xClientClient](https://github.com/FIL-Builders/xchainClient)**: listen to the storage requests from smart contract, aggregate small size of data and send storage deal proposal to SP on Filecoin.
-
-## Getting Started
-
-Make sure you have the following installed:
-
-- Node.js
+***** Deploying Contracts on Filecoin *****
+Deploying with account: 0x2c3b2B2325610a6814f2f822D0bF4DAB8CF16e16
+Axelar Gateway (Filecoin): 0x999117D44220F33e0441fbAb2A5aDB8FF485c54D
+Axelar Gas Service (Filecoin): 0xbe406f0189a0b4cf3a05c286473d23791dd44cc6
+duplicate definition - InvalidAddress()
+duplicate definition - InvalidAddress()
+deploying "DealClientAxl" (tx: 0x92890d59d481c097c70b5d3c1b3a293998c3f80a63d431507e57f0e83c190a98)...: deployed at 0x084622e6970BBcBA510454C6145313c2993ED9E4 with 148784092 gas
+🚀 Prover_Axelar Contract Deployed at:  0x084622e6970BBcBA510454C6145313c2993ED9E4
 
 
-First, clone the repository:
-```bash
-git clone https://github.com/FIL-Builders/dataBridgeDemo.git
-cd dataBridgeDemo
-```
-
-Configure Environment Variables
-
-Copy `.env.sample` to `.env`
-
-Set the JWT from your PINATA API INFO:
-```bash
-NEXT_PUBLIC_PINATA_JWT= swxxx
-```
-
-Install all dependencies:
-```bash
-npm install
-```
-Then, you can run the development server: 
-```bash
-npm run dev
-```
+***** Deploying Contracts on Source Chain: flow *****
+Deploying with account: 0x2c3b2B2325610a6814f2f822D0bF4DAB8CF16e16
+Axelar Gateway (Source - flow): 0xe432150cce91c13a887f7D836923d5597adD8E31
+Axelar Gateway (Destination - Filecoin): 0x999117D44220F33e0441fbAb2A5aDB8FF485c54D
+reusing "OnRampContract" at 0xA2Aea35523a71EFf81283E32F52151F12D5CBB7F
+🚀 OnRamp Contract Deployed at:  0xA2Aea35523a71EFf81283E32F52151F12D5CBB7F
+deploying "AxelarBridge" (tx: 0x3c2307a395b404b72cb893d42e92b7edcfdc2ec37da59d2ed87463619d804437)...: deployed at 0xFB69D0fb9C892F3565D66bcA92360Ca19B8D9780 with 718372 gas
+🚀 Oracle Contract Deployed at:  0xFB69D0fb9C892F3565D66bcA92360Ca19B8D9780
 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Step 3: Wire Filecoin with Source Chains
+***** Deploying Contracts on Filecoin *****
+Deploying with account: 0x2c3b2B2325610a6814f2f822D0bF4DAB8CF16e16
+Axelar Gateway (Filecoin): 0x999117D44220F33e0441fbAb2A5aDB8FF485c54D
+Axelar Gas Service (Filecoin): 0xbe406f0189a0b4cf3a05c286473d23791dd44cc6
+duplicate definition - InvalidAddress()
+reusing "DealClientAxl" at 0x084622e6970BBcBA510454C6145313c2993ED9E4
+🚀 Prover_Axelar Contract Deployed at:  0x084622e6970BBcBA510454C6145313c2993ED9E4
+***** Running Filecoin Configuration *****
+DealClientAxl Contract located at:  0x084622e6970BBcBA510454C6145313c2993ED9E4
+🔗 Detected source chains: flow
+🚀 Configuring DealClientAxl for source chain: flow & 0xFB69D0fb9C892F3565D66bcA92360Ca19B8D9780
+✅ Destination chain flow configured: 0x7880658bdd8237699ead5144e34d05d289b685f80c7cdec57b59b571ac57df67
+Chain ID: 545
+Chain Name: flow
+Source Oracle Address: 0xFB69D0fb9C892F3565D66bcA92360Ca19B8D9780
+🚀 Configuring DealClientAxl to add GAS for Axelar gas service.
+AddGasFunds Transaction sent: 0x9112b90f6c95eabf6ee77e7e196dc51b3723c4e0f36a523a64f4630d0038d214
+Transaction confirmed!
 
-<img width="1352" alt="image" src="https://github.com/user-attachments/assets/4a27b709-762b-43ab-a51d-e23cda13ec42" />
-
+### Step 4: Configure Source Chains
