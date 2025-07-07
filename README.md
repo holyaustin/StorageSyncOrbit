@@ -1,14 +1,15 @@
 # 🌌 StorageSyncOrbit  
-**A cross-chain data bridge protocol for decentralized storage on Filecoin**  
+**Cross-Chain Data Bridge with USDFC Stablecoin for Filecoin Storage Payments**  
 
-> *"Orbiting across blockchains to unify data storage"*  
+> *""Orbiting across blockchains to unify data storage with stable, cross-chain payments""*  
 
-This project demonstrates a **cross-chain data bridge** enabling seamless data onboarding from EVM-compatible chains (Avalanche, Arbitrum, Base, Linea) and non-EVM chains (Flow) to **Filecoin** for decentralized storage. It processes storage proposals, verifies cross-chain data integrity, and automates deal creation on Filecoin. Designed for future multi-chain expansion with modular bridge integrations.
+This project demonstrates a cross-chain data bridge protocol enabling seamless data onboarding from EVM-compatible chains (Avalanche, Arbitrum, Base, Linea) and non-EVM chains (Flow) to Filecoin for decentralized storage. It now supports USDFC stablecoin for gasless, price-stable payments across chains, ensuring predictable costs for storage deals. Modular design allows future multi-chain expansion with minimal configuration.
 
 ---
 
 ## 🚀 Key Features  
 - **Cross-Chain Data Sync**: Bridge data from Avalanche (Fuji Testnet), Flow (Testnet), and other chains to Filecoin (Calibration Testnet).  
+- **USDFC Stablecoin Integration**: Pay for Filecoin storage deals using USDFC (instead of volatile native tokens).
 - **Automated Storage Proposals**: Generate and execute Filecoin storage deals via smart contracts and off-chain agents.  
 - **Modular Architecture**: Plug-and-play support for new chains (e.g., Linea, Base).  
 - **On-Chain Verification**: Use cryptographic proofs (IPFS CID, Merkle roots) to validate data authenticity.  
