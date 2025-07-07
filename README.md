@@ -270,7 +270,7 @@ reusing "DealClientAxl" at 0x084622e6970BBcBA510454C6145313c2993ED9E4
 🚀 Prover_Axelar Contract Deployed at:  0x084622e6970BBcBA510454C6145313c2993ED9E4
 
 
-***** Running Filecoin Configuration *****
+***** Running Filecoin DealClientAxl  *****
 DealClientAxl Contract located at:  0x084622e6970BBcBA510454C6145313c2993ED9E4
 🔗 Detected source chains: flow
 🚀 Configuring DealClientAxl for source chain: flow & 0xFB69D0fb9C892F3565D66bcA92360Ca19B8D9780
@@ -282,4 +282,7 @@ Source Oracle Address: 0xFB69D0fb9C892F3565D66bcA92360Ca19B8D9780
 AddGasFunds Transaction sent: 0x9112b90f6c95eabf6ee77e7e196dc51b3723c4e0f36a523a64f4630d0038d214
 Transaction confirmed!
 
-### Step 4: Configure Source Chains
+### Step 4: Configure xchain
+New Ethereum account created!
+Address: 0x9085a30Ce5Af83a6514398499C1C8B7D24FE341E
+Keystore File Path: ./config/xchain_key.json

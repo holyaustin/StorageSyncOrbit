@@ -8,12 +8,18 @@
     "avalanche": {
       "ChainID": 43113,
       "Api": "wss://api.avax-test.network/ext/bc/C/ws",
-      "OnRampAddress": "0xb44cc5FB8CfEdE63ce1758CE0CDe0958A7702a16"
+      "OnRampAddress": "0xeE857540dddB6E6EA10a5c84f57562F11D5Fb47D"
+
+    },
+    "flow": {
+      "ChainID": 545,
+      "Api": "https://testnet.evm.nodes.onflow.org",
+      "OnRampAddress": "0xA2Aea35523a71EFf81283E32F52151F12D5CBB7F"
     }
   },
   "KeyPath": "./config/xchain_key.json",
-  "ClientAddr": "0x8C61C13fc41d63eDf5a05A8611CcdD774dE3e9A4",
-  "PayoutAddr": "0x8C61C13fc41d63eDf5a05A8611CcdD774dE3e9A4",
+  "ClientAddr": "0x9085a30Ce5Af83a6514398499C1C8B7D24FE341E",
+  "PayoutAddr": "0x9085a30Ce5Af83a6514398499C1C8B7D24FE341E",
   "OnRampABIPath": "./config/onramp-abi.json",
   "BufferPath": "~/.xchain/buffer",
   "BufferPort": 5077,
